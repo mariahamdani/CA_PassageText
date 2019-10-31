@@ -1,0 +1,45 @@
+
+```{r}
+library(tidyr)
+library(dplyr)
+library(readxl)
+library(tidyverse)
+library(tidytext)
+library(data.table)
+```
+
+```{r}
+PT <- read.csv("Testlet_Passage_Text.csv", header=TRUE)
+#edl <- edl %>% separate(EDL, c("grade", "word"), " ")
+#edl$word <- gsub("_", " ", edl$word)
+#edl$word <- tolower(edl$word)
+```
+
+```{r}
+bm <- read_excel("Andy Biemiller Words List.xls")
+bm <- bm[,c("WORD", "RATING")]
+```
+
+```{r}
+library(readxl)
+EDL_Cumulative_List_Long <- read_excel("EDL Cumulative List Long.xlsx")
+```
+```{r}
+
+RCK5_PT <- as.data.frame(RCKGto5_PassageText)
+```
+
+```{r}
+#separate into two data frames: IP and Q
+#RCK5_IP<- RCK5_PT(,IP)
+
+#RCK5_QZ<-dplyr::filter(RCK5_PT, grepl("Q:",title))
+```
+```{r}
+RCK5_QZ <- dplyr::filter(RCKGto5_PassageText, Title>"Q:")
+RCK5_IP <- dplyr::filter(RCKGto5_PassageText, Title<"Q:")
+RCK5_QZ$passage_text<-gsub('.Äú', '"', RCK5_QZ$passage_text)
+```
+
+
+
